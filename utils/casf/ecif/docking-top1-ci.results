@@ -6,5 +6,5 @@ boot.ci(boot.out = data.boot, conf = 0.9, type = "bca")
 
 Intervals : 
 Level       BCa          
-90%   (135.2, 150.8 )  
+90%   ( 0.7719,  0.8456 )  
 Calculations and Intervals on Original Scale

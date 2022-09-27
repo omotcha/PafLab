@@ -7,7 +7,6 @@ method <- "ecif";
 data_all <- read.table(paste(getwd(), "utils", "casf", method, "spearman_results", sep = "/"), header=FALSE);
 data <- as.matrix(data_all[,2]);
 
-# [omo]tcha: init aa
 mymean <- function(x,indices) sum(x[indices])/57;
 data.boot <- boot(data,mymean,R=10000,stype="i",sim="ordinary");
 sink(paste(getwd(), "utils", "casf", method, "spearman-ci.results", sep = "/"));
