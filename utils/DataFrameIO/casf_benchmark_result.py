@@ -10,7 +10,7 @@ from configs.config import tmp_dir
 import pandas as pd
 
 
-def get_benchmark():
+def get_scoring_power_benchmark():
     bm = pd.read_csv(os.path.join(tmp_dir, "sp_benchmark.txt"), delimiter=" ")
     bm["left_ci"] = bm["left_ci"].apply(lambda x: x[1:])
     bm["right_ci"] = bm["right_ci"].apply(lambda x: x[:-1])
@@ -18,5 +18,13 @@ def get_benchmark():
     return bm
 
 
+def get_ranking_power_benchmark():
+    bm = pd.read_csv(os.path.join(tmp_dir, "rp_benchmark.txt"), delimiter=" ")
+    bm["left_ci"] = bm["left_ci"].apply(lambda x: x[1:])
+    bm["right_ci"] = bm["right_ci"].apply(lambda x: x[:-1])
+    bm = bm.drop(columns=["id", "ch"])
+    return bm
+
+
 if __name__ == '__main__':
-    pass
+    print(get_ranking_power_benchmark())

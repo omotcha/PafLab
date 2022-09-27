@@ -8,9 +8,8 @@ data_all <- read.table(paste(getwd(), "utils", "casf", method, "spearman_results
 data <- as.matrix(data_all[,2]);
 
 # [omo]tcha: init aa
-aa <- seq_len(nrow(data_all));
 mymean <- function(x,indices) sum(x[indices])/57;
-data.boot <- boot(aa,mymean,R=10000,stype="i",sim="ordinary");
+data.boot <- boot(data,mymean,R=10000,stype="i",sim="ordinary");
 sink(paste(getwd(), "utils", "casf", method, "spearman-ci.results", sep = "/"));
 a <- boot.ci(data.boot,conf=0.9,type= "bca");
 print(a);
