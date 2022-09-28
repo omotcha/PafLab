@@ -3,11 +3,11 @@ platform: any
 env: any with spyrmsd
 name: ligrmsd.py
 RMSD calculation
+usage:
+    rmsd_calculator = RMSDCalculator()
+    rmsd_calculator.calc_rmsd("ligand.sdf", "reference_ligand.sdf", "standard/symmetric/hungarian", minimize=False)
 """
-import os.path
-from configs.config import tmp_dir
 from spyrmsd import io, rmsd
-from rdkit import Chem
 
 
 class RMSDCalculator:
@@ -88,7 +88,4 @@ class RMSDCalculator:
 
 
 if __name__ == '__main__':
-    rmsd_calculator = RMSDCalculator()
-    rmsd_calculator.cache_reference(os.path.join(tmp_dir, "dock", "1bcu_ligand.sdf"))
-    rmsd = rmsd_calculator.calc_rmsd(os.path.join(tmp_dir, "dock", "1bcu.sdf"), None, "hungarian", False)
-    print(rmsd)
+    pass
