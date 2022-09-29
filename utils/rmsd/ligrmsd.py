@@ -2,10 +2,12 @@
 platform: any
 env: any with spyrmsd
 name: ligrmsd.py
-RMSD calculation
+simple encapsulation of spyrmsd RMSD calculation
 usage:
     rmsd_calculator = RMSDCalculator()
     rmsd_calculator.calc_rmsd("ligand.sdf", "reference_ligand.sdf", "standard/symmetric/hungarian", minimize=False)
+caution:
+    spyrmsd uses Chem.SDMolSupplier to read sdf, if some sdf cannot be read, try mol2 instead
 """
 from spyrmsd import io, rmsd
 
@@ -35,15 +37,17 @@ class RMSDCalculator:
         :return:
         """
         if method not in ["standard", "hungarian", "symmetric"]:
-            raise(Exception("Method should be standard|hungarian|symmetric"))
+            raise(Exception("Method should be standard|hungarian|symmetric."))
         if ref_ligand is None:
             ref_lig = self._ref_lig
         else:
             ref_lig = io.loadmol(ref_ligand)
         if ref_lig is None:
-            raise(Exception("Reference ligand missing"))
+            raise(Exception("Reference ligand missing or cannot be read."))
 
         ligs = io.loadallmols(ligands)
+        if ligs is None or len(ligs) == 0:
+            raise(Exception("Ligand missing or cannot be read."))
 
         # remove Hs
         ref_lig.strip()
