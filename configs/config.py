@@ -17,3 +17,4 @@ tmp_dir = os.path.join(project_dir, "tmp")
 
 # dataset related
 coreset_dir = "E:\\datasets\\casf2016\\CASF-2016\\coreset"
+extratest_dir = "E:\\model_test"
