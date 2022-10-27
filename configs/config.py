@@ -18,3 +18,9 @@ tmp_dir = os.path.join(project_dir, "tmp")
 # dataset related
 coreset_dir = "E:\\datasets\\casf2016\\CASF-2016\\coreset"
 extratest_dir = "E:\\model_test"
+pdbbind_base = "E:\\datasets\\dataset\\pdbbind2020"
+aug_dir = {
+    "base": "E:\\datasets\\data_aug",
+    "ligands": "E:\\datasets\\data_aug\\docking_set_pdb",
+    "proteins": "E:\\datasets\\data_aug\\docking_set_pro_pdb"
+}
