@@ -58,26 +58,26 @@ def toECIFModelTest(src_d, tar_d):
     :param tar_d:
     :return:
     """
-    pids = []
+    targets = []
     for src_f in os.listdir(src_d):
         src_f_spl = src_f.split(".")
         if src_f_spl[-1] == "pdb":
-            pids.append(src_f_spl[0].split("_")[0])
-    for pid in pids:
-        prot_base = os.path.join(tar_d, pid)
+            targets.append(src_f_spl[0].split("_")[0])
+    for target in targets:
+        prot_base = os.path.join(tar_d, target)
         if not os.path.isdir(prot_base):
             os.mkdir(prot_base)
-            copyfile(os.path.join(src_d, "{}_p.pdb".format(pid)), os.path.join(prot_base, "{}_p.pdb".format(pid)))
+            copyfile(os.path.join(src_d, "{}_p.pdb".format(target)), os.path.join(prot_base, "{}_protein.pdb".format(target)))
             os.mkdir(os.path.join(prot_base, "ligs"))
-            if os.path.isfile(os.path.join(src_d, "{}.sdf".format(pid))):
-                copyfile(os.path.join(src_d, "{}.sdf".format(pid)),
-                         os.path.join(prot_base, "ligs", "{}.sdf".format(pid)))
-            if os.path.isfile(os.path.join(src_d, "{}_l.sdf".format(pid))):
-                copyfile(os.path.join(src_d, "{}_l.sdf".format(pid)),
-                         os.path.join(prot_base, "ligs", "{}_l.sdf".format(pid)))
-            if os.path.isfile(os.path.join(src_d, "{}_10.sdf".format(pid))):
-                copyfile(os.path.join(src_d, "{}_10.sdf".format(pid)),
-                         os.path.join(prot_base, "ligs", "{}_10.sdf".format(pid)))
+            if os.path.isfile(os.path.join(src_d, "{}.sdf".format(target))):
+                copyfile(os.path.join(src_d, "{}.sdf".format(target)),
+                         os.path.join(prot_base, "ligs", "{}.sdf".format(target)))
+            if os.path.isfile(os.path.join(src_d, "{}_l.sdf".format(target))):
+                copyfile(os.path.join(src_d, "{}_l.sdf".format(target)),
+                         os.path.join(prot_base, "ligs", "{}_l.sdf".format(target)))
+            if os.path.isfile(os.path.join(src_d, "{}_10.sdf".format(target))):
+                copyfile(os.path.join(src_d, "{}_10.sdf".format(target)),
+                         os.path.join(prot_base, "ligs", "{}_10.sdf".format(target)))
 
 
 if __name__ == '__main__':
