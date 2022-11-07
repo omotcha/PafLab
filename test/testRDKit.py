@@ -39,10 +39,20 @@ def testReadLigandFromMol2(molpath):
     return mol
 
 
+def testReadLigandFromSmiles(smiles):
+    mol = Chem.MolFromSmiles(smiles, sanitize=False)
+    mol.UpdatePropertyCache(strict=False)
+    Chem.SanitizeMol(mol,
+                     Chem.SanitizeFlags.SANITIZE_FINDRADICALS | Chem.SanitizeFlags.SANITIZE_KEKULIZE | Chem.SanitizeFlags.SANITIZE_SETAROMATICITY | Chem.SanitizeFlags.SANITIZE_SETCONJUGATION | Chem.SanitizeFlags.SANITIZE_SETHYBRIDIZATION | Chem.SanitizeFlags.SANITIZE_SYMMRINGS,
+                     catchErrors=True)
+    print(mol)
+
+
 if __name__ == '__main__':
     # testReadLigand(os.path.join(aug_dir["ligands"], "1dis", "20_ledock001_babel.sdf"))
     # testReadLigandFromMol2(os.path.join(aug_dir["ligands"], "1dis", "20_ledock001.mol2"))
     # testReadProtein(os.path.join(aug_dir["proteins"], "1e3v.pdb"))
-    for pocket in os.listdir(aug_dir["pockets"]):
-        testReadProtein(os.path.join(aug_dir["pockets"], pocket))
+    # for pocket in os.listdir(aug_dir["pockets"]):
+    #     testReadProtein(os.path.join(aug_dir["pockets"], pocket))
+    testReadLigandFromSmiles("O=C(C[nH]1ccccc1=O)NCc1cccnc1")
 
