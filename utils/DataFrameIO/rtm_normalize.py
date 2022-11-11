@@ -13,8 +13,8 @@ import pandas as pd
 def rtm_normalize(f_in, out_loc):
     """
 
-    :param f_in:
-    :param out_loc:
+    :param f_in: a dataframe, or a standard csv file that could be read by pandas
+    :param out_loc: the output location(folder) of normalized results
     :return:
     """
     if not isinstance(f_in, pd.DataFrame):

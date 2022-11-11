@@ -51,6 +51,6 @@ def split_into_single_sdf(src_f, tgt_d):
 
 
 if __name__ == '__main__':
-    base_dir = os.path.join(extratest_dir, "20221024")
+    base_dir = os.path.join(extratest_dir, "20221109", "7ama")
     # split_sdf(os.path.join(base_dir, "all.sdf"), 1000)
-    split_into_single_sdf(os.path.join(base_dir, "all.sdf"), os.path.join(base_dir, "output"))
+    split_into_single_sdf(os.path.join(base_dir, "7ama_enamine_glide.sdf"), os.path.join(base_dir, "ligs"))
